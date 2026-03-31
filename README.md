@@ -2,115 +2,168 @@
 
 <div align="center">
 
-## ACDS: AI Cyber Defense System
+## AI Cyber Defense System
 
-### Real-time network monitoring, AI-driven detection, adaptive online learning, and defensive response in one command center.
+### Autonomous detection. Adaptive learning. Live cyber operations visibility.
 
-`[ SIGNAL INTAKE ] --> [ FEATURE EXTRACTION ] --> [ AI DETECTION ] --> [ RESPONSE ] --> [ LIVE VISUALS ]`
+<p>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.x-0b1320?style=for-the-badge&logo=python&logoColor=7dd3fc">
+  <img alt="Streamlit" src="https://img.shields.io/badge/Streamlit-Dashboard-07111b?style=for-the-badge&logo=streamlit&logoColor=ff6b6b">
+  <img alt="XGBoost" src="https://img.shields.io/badge/XGBoost-Detection-08141a?style=for-the-badge&logoColor=9ae6b4">
+  <img alt="Scikit Learn" src="https://img.shields.io/badge/Scikit--Learn-Online%20Learning-0d1b2a?style=for-the-badge&logo=scikitlearn&logoColor=fbbf24">
+</p>
+
+```text
+[ INGRESS ] ---> [ FLOW ENGINE ] ---> [ FEATURE GRID ] ---> [ AI DETECTION ] ---> [ RESPONSE ]
+       \___________________________________________________________________________________/
+                                         |
+                                         v
+                              [ LIVE COMMAND CENTER ]
+```
 
 </div>
 
 ---
 
-## Overview
+## System Vision
 
-ACDS is a futuristic cyber defense platform built to watch live network traffic, detect suspicious behavior with machine learning, adapt through online learning, and surface everything through an operations-style dashboard.
+ACDS is a futuristic cyber defense platform built to monitor live traffic, extract flow intelligence, score behavior through machine learning, adapt through online updates, and surface everything inside a command-center style dashboard.
 
-It is designed as a compact SOC-style pipeline:
+The project is designed to feel like a compact SOC pipeline:
 
-- packet capture and flow tracking
-- feature extraction from observed traffic
-- offline-trained detection model for fast inference
-- online updater for adaptive learning
-- firewall response hooks
-- live Streamlit dashboard for situational awareness
-
----
-
-## Core Capabilities
-
-### Threat Detection Engine
-- Uses a trained detection model to classify observed flows.
-- Supports live inference against incoming traffic features.
-- Aligns runtime features with the saved scaler schema for safer deployment.
-
-### Online Learning Loop
-- Loads a dedicated online model for incremental updates.
-- Updates when confidence is high enough.
-- Persists the online model to disk for future sessions.
-
-### Defensive Action Layer
-- Includes firewall blocking hooks for suspicious IPs.
-- Logs detections and containment activity to a shared event stream.
-
-### Live Command Center
-- Advanced Streamlit dashboard with:
-- KPI cards
-- threat mix charts
-- activity timelines
-- recent security event tables
-- containment views
-- detection feed panels
-
-### Attack Simulation
-- Includes a simulator to generate synthetic attack events for demos and dashboard testing.
+- capture traffic
+- convert packets into features
+- classify suspicious behavior
+- react to threats
+- display live telemetry for analysts and demos
 
 ---
 
-## Architecture
+## Why ACDS
+
+Modern security demos often stop at model training. ACDS goes further by connecting:
+
+- live network observation
+- real-time inference
+- defensive response hooks
+- adaptive online learning
+- dashboard-driven visibility
+
+It is both an engineering project and a presentation layer for cyber defense workflows.
+
+---
+
+## Core Modules
+
+### Detection Engine
+- Loads a trained offline detection model for fast inference.
+- Uses a saved scaler and encoder for consistent predictions.
+- Supports runtime schema alignment for live traffic features.
+
+### Online Learning Layer
+- Loads a persistent incremental model.
+- Updates the model when confidence thresholds are met.
+- Stores learned state for future execution.
+
+### Traffic Intelligence Pipeline
+- Sniffs packets and groups them into flows.
+- Extracts runtime traffic features from observed network behavior.
+- Feeds transformed flow data into the AI pipeline.
+
+### Defense Layer
+- Contains firewall response hooks for IP blocking.
+- Logs detections and containment actions into a unified event stream.
+
+### Command Center Dashboard
+- Advanced Streamlit interface with telemetry panels and cyber-themed visuals.
+- Shows detection volume, threat mix, recent events, blocked IPs, and alert feed.
+
+### Simulation Layer
+- Generates synthetic attack events for testing, demos, and UI validation.
+
+---
+
+## High-Level Architecture
 
 ```text
-                    +---------------------------+
-                    |     Network Traffic       |
-                    +-------------+-------------+
-                                  |
-                                  v
-                    +---------------------------+
-                    |   Flow Extractor / Sniff  |
-                    +-------------+-------------+
-                                  |
-                                  v
-                    +---------------------------+
-                    |   Feature Engineering     |
-                    +-------------+-------------+
-                                  |
-                                  v
-                    +---------------------------+
-                    |  Scaler + Detection Model |
-                    +-------------+-------------+
-                                  |
-               +------------------+------------------+
-               |                                     |
-               v                                     v
-   +---------------------------+         +---------------------------+
-   |  Firewall / Response      |         |   Online Learning Model   |
-   +-------------+-------------+         +-------------+-------------+
-                 |                                     |
-                 +------------------+------------------+
-                                    |
-                                    v
-                        +---------------------------+
-                        |     Logs + Dashboard      |
-                        +---------------------------+
+                         +----------------------------------+
+                         |         Network Traffic          |
+                         +----------------+-----------------+
+                                          |
+                                          v
+                         +----------------------------------+
+                         |     Sniffer / Flow Extractor     |
+                         +----------------+-----------------+
+                                          |
+                                          v
+                         +----------------------------------+
+                         |      Feature Engineering Grid    |
+                         +----------------+-----------------+
+                                          |
+                                          v
+                         +----------------------------------+
+                         | Scaler + Detection Model + Label |
+                         +----------------+-----------------+
+                                          |
+                     +--------------------+--------------------+
+                     |                                         |
+                     v                                         v
+          +--------------------------+              +--------------------------+
+          |   Firewall / Response    |              |   Online Learning Loop   |
+          +------------+-------------+              +------------+-------------+
+                       |                                         |
+                       +--------------------+--------------------+
+                                            |
+                                            v
+                          +--------------------------------------+
+                          | Logs / Dashboard / Operator View     |
+                          +--------------------------------------+
 ```
 
 ---
 
-## Project Structure
+## Command Center Preview
+
+The dashboard is designed around a futuristic SOC aesthetic:
+
+- immersive dark control-room styling
+- real-time KPI cards
+- attack mix charts
+- event timelines
+- containment tracking
+- rolling detection feed
+
+It is intended to feel less like a generic analytics page and more like an active cyber operations console.
+
+---
+
+## Repository Layout
 
 ```text
 ACDS/
 |-- backend/
 |   |-- defense/
+|   |   `-- firewall.py
 |   |-- detection/
+|   |   |-- detect.py
+|   |   `-- train_detection_model.py
 |   |-- network/
+|   |   |-- features.py
+|   |   |-- flow_extractor.py
+|   |   `-- sniffer.py
 |   |-- online_learning/
+|   |   |-- init_online_model.py
+|   |   |-- online_model.py
+|   |   `-- update.py
 |   |-- utils/
+|   |   |-- logger.py
+|   |   `-- preprocessing.py
 |   `-- main_pipeline.py
 |-- dashboard/
 |   `-- dashboard.py
 |-- logs/
 |-- models/
+|   `-- generate_models.py
 |-- scripts/
 |   |-- run_backend.py
 |   |-- run_sniffer.py
@@ -123,7 +176,7 @@ ACDS/
 
 ## Quick Start
 
-### 1. Create and activate your environment
+### 1. Create the environment
 
 ```powershell
 python -m venv acds_env
@@ -131,13 +184,13 @@ python -m venv acds_env
 pip install -r requirements.txt
 ```
 
-### 2. Start the backend
+### 2. Start the backend pipeline
 
 ```powershell
 python scripts/run_backend.py
 ```
 
-### 3. Start the sniffer
+### 3. Start packet sniffing
 
 ```powershell
 python scripts/run_sniffer.py
@@ -149,7 +202,7 @@ python scripts/run_sniffer.py
 streamlit run dashboard/dashboard.py
 ```
 
-### 5. Run the attack simulator
+### 5. Generate simulated attack activity
 
 ```powershell
 python scripts/simulate_attack.py
@@ -157,68 +210,70 @@ python scripts/simulate_attack.py
 
 ---
 
-## Runtime Notes
+## Runtime Flow
+
+```text
+1. Packets are observed
+2. Flows are built and timed
+3. Features are computed
+4. Features are aligned to the trained schema
+5. The detection model classifies the flow
+6. Suspicious behavior can trigger response logic
+7. High-confidence samples feed the online learner
+8. Logs stream into the dashboard
+```
+
+---
+
+## Platform Notes
 
 ### Windows Packet Capture
 
-If packet sniffing fails on Windows, install:
+For sniffing on Windows, install:
 
 - Npcap
-- enable `WinPcap-compatible mode` during installation
+- enable `WinPcap-compatible mode`
 
 ### Logging
 
-- Runtime events are written to `logs/acds.log`
-- the dashboard reads directly from that log stream
+- events are written to `logs/acds.log`
+- dashboard panels are driven from this shared log stream
+- UTF-8-safe logging is used for improved Windows compatibility
 
 ### Models
+
+The project currently uses:
 
 - `models/detection_model.pkl`
 - `models/scaler.pkl`
 - `models/encoder.pkl`
 - `models/online_model.pkl`
 
-These are loaded using repo-root paths so startup is stable regardless of the shell working directory.
+Path handling has been stabilized to load from the repository root instead of depending on the current shell directory.
 
 ---
 
-## Visual Direction
+## Recent Improvements
 
-ACDS is built around a modern cyber-operations feel:
-
-- dark command-center dashboard
-- live telemetry panels
-- threat-focused charts
-- log-driven event visibility
-- defensive workflow from detection to containment
-
-This makes it a strong fit for:
-
-- academic cybersecurity demos
-- ML-based intrusion detection experiments
-- portfolio projects
-- blue-team themed showcases
-
----
-
-## Current Highlights
-
-- fixed Windows-safe UTF-8 logging
+- upgraded the dashboard into a more advanced cyber operations UI
+- fixed Windows-safe logging and encoding issues
 - stabilized path handling for models and logs
-- improved backend resilience around missing packet capture drivers
-- aligned preprocessing with the scaler's expected feature schema
-- upgraded the dashboard into an advanced SOC-style UI
+- improved sniffer launch behavior through the active Python interpreter
+- added graceful handling for missing packet capture support
+- aligned preprocessing with the trained scaler schema
+- improved simulator logging compatibility
 
 ---
 
 ## Roadmap
 
-- richer live feature extraction to match the training schema more fully
-- geolocation and threat intelligence enrichment
-- dashboard filtering and analyst drill-down panels
-- persistent alert history with structured storage
-- model evaluation views and confidence analytics
-- multi-node telemetry ingestion
+- richer flow feature extraction to reduce zero-filled model inputs
+- structured persistence for alerts and detections
+- analyst filters and search within the dashboard
+- model confidence visualizations
+- IP intelligence enrichment and geolocation overlays
+- multi-source telemetry ingestion
+- drill-down panels for threat investigation
 
 ---
 
@@ -234,19 +289,30 @@ This makes it a strong fit for:
 
 ---
 
-## Cyber Aesthetic
+## Use Cases
+
+- cybersecurity academic projects
+- intrusion detection demos
+- machine learning security showcases
+- blue-team themed portfolios
+- real-time dashboard demonstrations
+
+---
+
+## Futuristic Console Sequence
 
 ```text
->>> initializing defense mesh...
->>> calibrating anomaly filters...
->>> watching ingress channels...
->>> hostile pattern signatures detected...
->>> containment systems armed...
->>> command center online
+> booting acds core...
+> synchronizing anomaly filters...
+> loading trained defense models...
+> opening telemetry channels...
+> monitoring ingress vectors...
+> threat lattice active...
+> command center online...
 ```
 
 ---
 
 ## License
 
-This repository currently has no explicit license file. Add one before open-source distribution if needed.
+This repository currently does not include a dedicated license file. Add one before public open-source distribution if needed.
